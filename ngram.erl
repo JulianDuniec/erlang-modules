@@ -9,9 +9,9 @@ get_grams(Text, GramLen) ->
 
 %% Counts unique item in list (ex [a,a,b] will become {a : 2, b : 1})
 histogram(List) ->
-	lists:foldl(fun(X, D) -> dict:update_counter(X, 1, D) end, dict:new(), List).	
+	dict:to_list(lists:foldl(fun(X, D) -> dict:update_counter(X, 1, D) end, dict:new(), List)).	
 
 %% Gets a table containing the grams and weights for each gram.
 %% Example ngram("AAAAAAAAABBBBB", 4) -> [{"AAAB",1},{"ABBB",1},{"AAAA",6},{"AABB",1},{"BBBB",2}]
 ngram(Text, GramLen) ->
-	dict:to_list(histogram(get_grams(Text, GramLen))).
+	histogram(get_grams(Text, GramLen)).
