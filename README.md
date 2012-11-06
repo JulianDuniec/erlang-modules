@@ -1,3 +1,8 @@
+# Erlang N-gram-module
+Produces a n-gram graph from a supplied string.
+
+# Example
+
 ```` elang
 
 ngram:ngram("Hello github! This is an ngram-module written in erlang", 2).
