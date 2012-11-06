@@ -7,6 +7,7 @@
 
 %% Calculates the mean of the supplied list
 %% http://en.wikipedia.org/wiki/Arithmetic_mean
+mean(List) when length(List) =:= 0 -> erlang:error("List cannot be empty");
 mean(List) ->
 	lists:sum(List) / length(List).
 
