@@ -20,14 +20,14 @@ meansquarederror(Predictions, True)
 
 %% Guard for zero-length lists
 meansquarederror(Predictions, True)
-	when length(Predictions) =:= 0 or length(True) =:= 0 ->
-		erlang:error("Length of predictions or true values cannot be zero").
+	when (length(Predictions) =:= 0) or (length(True) =:= 0) ->
+		erlang:error("Length of predictions or true values cannot be zero");
 
 meansquarederror(Predictions, True) -> 
 	1/length(Predictions) * meansquarederror_sumerrors(Predictions, True, 0).
 
 %% Helper for meansquarederror -> sums the squarederror for both lists
-meansquarederror_sumerrors(P, T, Sum) when length(P) =:= 0 -> Sum;
+meansquarederror_sumerrors(P, T, Sum) when (length(P) =:= 0) and (length(T) =:= 0) -> Sum;
 meansquarederror_sumerrors(P, T, Sum) ->
 	Sum + squarederror(hd(P), hd(T)) + meansquarederror_sumerrors(tl(P), tl(T), Sum).
 
