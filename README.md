@@ -1,11 +1,13 @@
-# Erlang N-gram-module
+# A collection of erlang-modules.. 
+
+## Erlang N-gram-module
 Produces a n-gram graph from a supplied string.
 
-# Example
+## Example
 
 ```` elang
 
-ngram:ngram("Hello github! This is an ngram-module written in erlang", 2).
+jdngram:reatello github! This is an ngram-module written in erlang", 2).
 [{" e",1},
  {"ng",2},
  {"it",2},
