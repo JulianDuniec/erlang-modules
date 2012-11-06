@@ -18,7 +18,7 @@ meansquarederror(Predictions, True) ->
 %% Helper for meansquarederror -> sums the squarederror for both lists
 meansquarederror_sumerrors(P, T, Sum) when length(P) =:= 0 -> Sum;
 meansquarederror_sumerrors(P, T, Sum) ->
-	Sum + se(hd(P), hd(T)) + mse_sumerrors(tl(P), tl(T), Sum).
+	Sum + squarederror(hd(P), hd(T)) + mse_sumerrors(tl(P), tl(T), Sum).
 
 %% Calculates the squared error between X and Y
 squarederror(X,Y) -> math:pow((X-Y),2).
