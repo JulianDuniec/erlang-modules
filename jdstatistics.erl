@@ -12,9 +12,20 @@ mean(List) ->
 
 %% Calculates the Mean Squared Error of the supplied lists
 %% http://en.wikipedia.org/wiki/Mean_squared_error
-meansquarederror(Predictions, True) when length(Predictions) =/= length(True) -> erlang:error("Length of predictions must equal length of True values.");
+
+%% Guard for different lengths
+meansquarederror(Predictions, True) 
+	when length(Predictions) =/= length(True) -> 
+		erlang:error("Length of predictions must equal length of True values.");
+
+%% Guard for zero-length lists
+meansquarederror(Predictions, True)
+	when length(Predictions) =:= 0 or length(True) =:= 0 ->
+		erlang:error("Length of predictions or true values cannot be zero").
+
 meansquarederror(Predictions, True) -> 
 	1/length(Predictions) * meansquarederror_sumerrors(Predictions, True, 0).
+
 %% Helper for meansquarederror -> sums the squarederror for both lists
 meansquarederror_sumerrors(P, T, Sum) when length(P) =:= 0 -> Sum;
 meansquarederror_sumerrors(P, T, Sum) ->
