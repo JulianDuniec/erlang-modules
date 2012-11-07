@@ -7,7 +7,7 @@ Produces a n-gram graph from a supplied string.
 
 ```` elang
 
-jdngram:reatello github! This is an ngram-module written in erlang", 2).
+jdngram:create("Hello github! This is an ngram-module written in erlang", 2).
 [{" e",1},
  {"ng",2},
  {"it",2},
